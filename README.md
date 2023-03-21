@@ -1,7 +1,4 @@
 <h1 align="center">bettercp</h1>
-
-[![Build Status](https://app.travis-ci.com/dasShounak/bettercp.svg?branch=main)](https://app.travis-ci.com/dasShounak/bettercp)
-
 <p align="center">A better way to copy files</p>
 
 ***
@@ -20,3 +17,6 @@ Options:
   -V, --version          Print version
 
 ```
+***
+
+[![Build Status](https://app.travis-ci.com/dasShounak/bettercp.svg?branch=main)](https://app.travis-ci.com/dasShounak/bettercp)
