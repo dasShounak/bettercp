@@ -51,7 +51,8 @@ fn main() {
         }
     }
 
-    println!("{src} {dest_path} {ext}");
+    // Copy file
+    fs::copy(src, dest_path);
 }
 
 #[test]
