@@ -36,9 +36,9 @@ fn main() {
     match args.rename {
         Some(name) => {
             dest_path = if dest.ends_with("/") {
-                format!("{}{}", dest, name)
+                format!("{}{}{}", dest, name, ext)
             } else {
-                format!("{}/{}", dest, name)
+                format!("{}/{}{}", dest, name, ext)
             };
         },
 
