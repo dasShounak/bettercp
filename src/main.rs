@@ -36,7 +36,13 @@ fn main() {
             };
         },
 
-        None => todo!()
+        None => {
+            dest_path = if dest.ends_with("/") {
+                format!("{}{}", dest, src)
+            } else {
+                format!("{}/{}", dest, src)
+            };
+        }
     }
 
     println!("{src} {dest_path} ");
