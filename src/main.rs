@@ -52,7 +52,10 @@ fn main() {
     }
 
     // Copy file
-    fs::copy(src, dest_path);
+    match fs::copy(src, dest_path) {
+        Ok(_) => {},
+        Err(e) => eprintln!("Error copying file: {e}"),
+    }
 }
 
 #[test]
