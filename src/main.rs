@@ -21,11 +21,25 @@ struct Cli {
 fn main() {
     let args = Cli::parse();
     
-    let source_path = args.filename.to_str().unwrap(); 
-    let destination_path = args.destination.to_str().unwrap(); 
-    let name = args.rename.unwrap_or(String::new());
+    //let name = args.rename.unwrap_or(String::new());
+    let src = args.filename.to_str().unwrap(); 
+    let dest = args.destination.to_str().unwrap(); 
 
-    println!("{source_path} {destination_path} {name}");
+    let mut dest_path: String;
+
+    match args.rename {
+        Some(name) => {
+            dest_path = if dest.ends_with("/") {
+                format!("{}{}", dest, name)
+            } else {
+                format!("{}/{}", dest, name)
+            };
+        },
+
+        None => todo!()
+    }
+
+    println!("{src} {dest_path} ");
 }
 
 #[test]
