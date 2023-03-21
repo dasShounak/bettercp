@@ -25,6 +25,12 @@ fn main() {
     let src = args.filename.to_str().unwrap(); 
     let dest = args.destination.to_str().unwrap(); 
 
+    // Get the extension of the file to be copied (without the dot)
+    let mut ext = "";
+    if let Some(index) = src.find(".") {
+        ext = &src[index..];
+    }
+
     let mut dest_path: String;
 
     match args.rename {
@@ -45,7 +51,7 @@ fn main() {
         }
     }
 
-    println!("{src} {dest_path} ");
+    println!("{src} {dest_path} {ext}");
 }
 
 #[test]
