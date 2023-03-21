@@ -1,6 +1,6 @@
 [package]
 name = "bettercp"
-author = "Shounak Das <shounakdas@protonmail.com>"
+authors = ["Shounak Das <shounakdas@protonmail.com>"]
 description = "A better way to copy files. Using bettercp, you can not only copy files to another location, but also rename it." 
 version = "0.1.0"
 edition = "2021"
