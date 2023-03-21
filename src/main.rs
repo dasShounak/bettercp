@@ -1,3 +1,10 @@
+/* bettercp
+ **********************************************
+ * Author: Shounak Das
+ * Github: https://www.github.com/dasShounak
+ **********************************************
+ */
+
 #![allow(unused)]
 
 use std::path::PathBuf;
@@ -22,19 +29,24 @@ fn main() {
     let args = Cli::parse();
     
     //let name = args.rename.unwrap_or(String::new());
+
     let src = args.filename.to_str().unwrap(); 
     let dest = args.destination.to_str().unwrap(); 
 
     // Get the extension of the file to be copied (without the dot)
     let mut ext = "";
     if let Some(index) = src.find(".") {
-        ext = &src[index..];
+        ext = &src[index..]; // Borrow only the characters from "." to the end of the string
     }
 
     let mut dest_path: String;
 
     match args.rename {
+
+        // If the file has to be renamed, then join the destination path `dest` with `rename` and
+        // append the file extension `ext`
         Some(name) => {
+            // Check if the destination path ends with a slash "/"
             dest_path = if dest.ends_with("/") {
                 format!("{}{}{}", dest, name, ext)
             } else {
@@ -42,7 +54,10 @@ fn main() {
             };
         },
 
+        // If `rename` argument isn't provided, then copy the filename `src` with destination path
+        // `dest`
         None => {
+            // Check if the destination path ends with a slash "/"
             dest_path = if dest.ends_with("/") {
                 format!("{}{}", dest, src)
             } else {
@@ -51,7 +66,7 @@ fn main() {
         }
     }
 
-    // Copy file
+    // Copy file at `src` to `dest_path`
     match fs::copy(src, dest_path) {
         Ok(_) => {},
         Err(e) => eprintln!("Error copying file: {e}"),
