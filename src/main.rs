@@ -27,8 +27,6 @@ struct Cli {
 
 fn main() {
     let args = Cli::parse();
-    
-    //let name = args.rename.unwrap_or(String::new());
 
     let src = args.filename.to_str().unwrap(); 
     let dest = args.destination.to_str().unwrap(); 
@@ -40,6 +38,9 @@ fn main() {
     }
 
     let mut dest_path: String;
+
+    // If `rename` is not provided, then create an empty string
+    //let name = args.rename.unwrap_or(String::new());
 
     match args.rename {
 
